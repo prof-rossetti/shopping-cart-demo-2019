@@ -27,7 +27,7 @@ products = [
 # INFO CAPTURE / INPUT
 #
 
-total_price = 0
+subtotal_price = 0
 selected_ids = []
 
 while True:
@@ -35,31 +35,41 @@ while True:
     if selected_id == "DONE":
         break
     else:
-        #matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-        #matching_product = matching_products[0]
-        #total_price = total_price + matching_product["price"]
-        #print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
         selected_ids.append(selected_id)
 
 #
 # INFO DISPLAY / OUTPUT
 #
 
-# print(selected_ids)
+print("---------------------------------")
+print("GREEN FOODS GROCERY")
+print("www.green-foods-grocery.com")
+#TODO: The date and time of the beginning of the checkout process, formatted in a human-friendly way.
+print("---------------------------------")
+
+
+print("SELECTED PRODUCTS:")
 
 for selected_id in selected_ids:
       matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
       matching_product = matching_products[0]
-      total_price = total_price + matching_product["price"]
-      print("SELECTED PRODUCT: " + matching_product["name"] + " " + str(matching_product["price"]))
+      subtotal_price = subtotal_price + matching_product["price"]
+      print(" ... " + matching_product["name"] + " " + str(matching_product["price"]))
 
-print("TOTAL PRICE: " + str(total_price)) #TODO format as USD
+print("---------------------------------")
 
-# A grocery store name of your choice.
-# A grocery store phone number and/or website URL and/or address of choice.
-# The date and time of the beginning of the checkout process, formatted in a human-friendly way.
-# The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $1.50).
-# The total cost of all shopping cart items, formatted as US dollars and cents (e.g. $4.50), calculated as the sum of their prices.
-# The amount of tax owed, calculated by multiplying the total cost by a District of Columbia sales tax rate of 6%.
-# The total amount owed, formatted as US dollars and cents (e.g. $4.77), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items.
-# A friendly message thanking the customer and/or encouraging the customer to shop again.
+print("SUBTOTAL: " + str(subtotal_price)) #TODO format as USD
+
+TAX_RATE = 0.06 # Washington, DC sales tax rate (constant)
+
+tax = subtotal_price * TAX_RATE
+
+print("TAX: " + str(tax)) #TODO format as USD
+
+total_price = subtotal_price + tax
+
+print("TOTAL: " + str(total_price)) #TODO format as USD
+
+print("---------------------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("---------------------------------")

@@ -1,5 +1,9 @@
 # shopping_cart.py
 
+import datetime as dt
+
+TAX_RATE = 0.06 # Washington, DC sales tax rate (constant)
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -27,6 +31,7 @@ products = [
 # INFO CAPTURE / INPUT
 #
 
+checkout_start_at = dt.datetime.now() # current date and time, see: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/modules/datetime.md
 subtotal_price = 0
 selected_ids = []
 
@@ -43,11 +48,12 @@ while True:
 
 print("---------------------------------")
 print("GREEN FOODS GROCERY")
-print("www.green-foods-grocery.com")
-#TODO: The date and time of the beginning of the checkout process, formatted in a human-friendly way.
+print("WWW.GREEN-FOODS-GROCERY.COM")
+print("---------------------------------")
+print("CHECKOUT AT: " + checkout_start_at.strftime("%Y-%m-%d %I:%M %p")) # datetime formatting, see: https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
 print("---------------------------------")
 
-# utility function to convert float / integer to usd-formatted string
+# utility function to convert float or integer to usd-formatted string (for printing)
 # see: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/notes/python/datatypes/numbers.md
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
@@ -58,22 +64,16 @@ for selected_id in selected_ids:
       matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
       matching_product = matching_products[0]
       subtotal_price = subtotal_price + matching_product["price"]
-      print(" ... " + matching_product["name"] + " " + to_usd(matching_product["price"]))
-
-print("---------------------------------")
-
-print("SUBTOTAL: " + to_usd(subtotal_price))
-
-TAX_RATE = 0.06 # Washington, DC sales tax rate (constant)
+      print(" ... " + matching_product["name"] + " (" + to_usd(matching_product["price"]) + ")")
 
 tax = subtotal_price * TAX_RATE
 
-print("TAX: " + to_usd(tax))
-
 total_price = subtotal_price + tax
 
+print("---------------------------------")
+print("SUBTOTAL: " + to_usd(subtotal_price))
+print("TAX: " + to_usd(tax))
 print("TOTAL: " + to_usd(total_price))
-
 print("---------------------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
 print("---------------------------------")

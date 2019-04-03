@@ -1,5 +1,5 @@
 
-from shopping_cart import to_usd
+from shopping_cart import to_usd, find_product
 
 def test_to_usd():
     # it should apply USD formatting
@@ -13,3 +13,12 @@ def test_to_usd():
 
     # it should display thousands separators
     assert to_usd(1234567890.5555555) == "$1,234,567,890.56"
+
+def test_find_product():
+    products = [
+        {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
+        {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
+        {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
+    ]
+    matching_product = find_product("2", products)
+    assert matching_product["name"] == "All-Seasons Salt"

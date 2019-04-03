@@ -24,7 +24,13 @@ python shopping_cart.py
 
 ## Testing
 
-Install the `pytest` package, perhaps within a virtual environment, and invoke it from the root directory of this repository to run tests:
+Install the `pytest` package, perhaps within a virtual environment:
+
+```sh
+pip install pytest
+```
+
+Run tests:
 
 ```py
 pytest

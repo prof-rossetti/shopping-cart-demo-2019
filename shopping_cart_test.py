@@ -1,7 +1,10 @@
 
 import pytest # for pytest.raises (see: https://docs.pytest.org/en/latest/assert.html)
 
-from shopping_cart import to_usd, find_product
+from shopping_cart import TAX_RATE, to_usd, find_product
+
+def test_tax_rate():
+    assert(TAX_RATE) == 0.06
 
 def test_to_usd():
     # it should apply USD formatting

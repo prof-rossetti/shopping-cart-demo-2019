@@ -1,7 +1,7 @@
 
-#from shopping_cart import to_usd
+from shopping_cart import to_usd
 
-def hello_test():
-    message = "HELLO"
-    print(message)
-    assert message == "GOODBYE"
+def test_to_usd():
+    price = 4.5
+    price_usd = to_usd(price)
+    assert price_usd == 4.5 #"$4.50"

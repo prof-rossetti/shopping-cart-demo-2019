@@ -1,20 +1,30 @@
 # Shopping Cart Project
 
-[![Build Status](https://travis-ci.com/s2t2/shopping-cart-screencast.svg?branch=master)](https://travis-ci.com/s2t2/shopping-cart-screencast)
-
-[Project Description](https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/projects/shopping-cart.md#requirements)
+A demo version of the "Shopping Cart" project, for student reference.
 
 ## Prerequisites
 
-  + Python 3.x
+  + Anaconda 3.7
+  + Python 3.7
+  + Pip
 
 ## Installation
 
-Clone or download from [GitHub source](https://github.com/s2t2/shopping-cart-screencast), then navigate into the project repository:
+Fork this repository under your own control, then clone or download the resulting repository onto your computer. Then navigate there from the command line:
 
 ```sh
-cd shopping-cart-screencast
+cd shopping-cart-demo-2019
 ```
+
+> NOTE: subsequent usage and testing commands assume you are running them from the repository's root directory.
+
+Use Anaconda to create and activate a new virtual environment, perhaps called "shopping-env". 
+
+```sh
+conda create -n shopping-env python=3.7 # (first time only)
+conda activate shopping-env
+```
+
 
 ## Usage
 
@@ -26,7 +36,7 @@ python shopping_cart.py
 
 ## Testing
 
-Install the `pytest` package, perhaps within a virtual environment:
+From within the virtual environment, install the `pytest` package (first time only):
 
 ```sh
 pip install pytest
